@@ -38,5 +38,8 @@ ansible/
 
 # usage
 ```
+#to get every playbook + config files
 git clone git://github.com/mxkle/ansible
+#to get specifig playbooks, use snv
+
 ```
