@@ -1,0 +1,50 @@
+---
+# this role installs nginx
+
+#- name: apt-get update as a separate step
+#  apt:
+#    update_cache: yes
+
+- name: import key used by apt
+  apt_key:
+    url: "{{ nginx_key }}"
+    state: present
+
+- name: add nginx repo
+  apt_repository:
+    repo: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items: "{{ nginx_repo }}"
+
+- name: create /var/www dir
+  file:
+    path: "/var/www"
+    state: directory
+    mode: "0755"
+
+- name: install nginx
+  apt:
+    name: "{{ nginx_packages }}"
+    state: present
+    update_cache: yes
+
+- name: rm old nginx.conf
+  file:
+    path: "/etc/nginx/nginx.conf"
+    state: absent
+
+- name: copy index.html into /var/www directory
+  template:
+    src: "index.html.j2"
+    dest: "/var/www/index.html"
+    mode: "0644"
+
+- name: copy nginx.conf into /etc/nginx directory
+  template:
+    src: "templates/nginx.conf.j2"
+    dest: "/etc/nginx/nginx.conf"
+    mode: "0644"
+  notify: restart nginx
+
+- include: handlers/main.yml

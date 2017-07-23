@@ -1,0 +1,31 @@
+---
+# this role installs graylog
+
+#- name: apt-get update as a separate step
+#  apt:
+#    update_cache: yes
+
+- name: install apt-transport-https
+  apt:
+    name: "{{ graylog_packages[0]}}"
+    state: present
+
+- name: download graylog.deb package
+  get_url:
+    url: "{{ graylog_repo }}"
+    dest: "{{ graylog_deb_path }}"
+
+- name: install graylog.deb package
+  apt:
+    deb: "{{ graylog_deb_path }}"
+    state: present
+    update_cache: yes
+
+- name: install graylog
+  apt:
+    name: "{{ graylog_packages[1]}}"
+    state: present
+    update_cache: yes
+  notify: start graylog
+
+- include: handlers/main.yml

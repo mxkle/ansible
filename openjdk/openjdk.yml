@@ -1,0 +1,6 @@
+---
+# playbook to install openjdk role
+
+- hosts: openjdk
+  roles:
+    - openjdk

@@ -1,0 +1,6 @@
+---
+# playbook to install nginx role
+
+- hosts: nginx
+  roles:
+    - nginx

@@ -1,0 +1,11 @@
+---
+
+- name: restart es
+  service:
+    name: elasticsearch
+    state: restarted
+
+- name: start es
+  service:
+    name: elasticsearch
+    state: started

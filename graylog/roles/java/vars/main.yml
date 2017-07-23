@@ -1,0 +1,10 @@
+---
+
+java_repo: "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main"
+java_repo_src: "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main"
+java_key: "EEA14886"
+java_keyserver: "keyserver.ubuntu.com"
+java_sources_list: "webupd8team-java"
+java_packages:
+  - "oracle-java8-installer"
+  - "oracle-java8-set-default"

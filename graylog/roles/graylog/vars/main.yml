@@ -1,0 +1,9 @@
+---
+
+graylog_packages:
+  - "apt-transport-https"
+  - "uuid-runtime"
+  - "graylog-server"
+
+graylog_repo: "https://packages.graylog2.org/repo/packages/graylog-2.2-repository_latest.deb"
+graylog_deb_path: "/tmp/graylog-2.2-repository_latest.deb"

@@ -1,0 +1,7 @@
+es_url: "https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/2.4.5/elasticsearch-2.4.5.tar.gz"
+es_key: "D88E42B4"
+es_keyserver: "https://packages.elastic.co/GPG-KEY-elasticsearch"
+es_repo: "deb https://packages.elasticsearch.org/elasticsearch/2.x/debian stable main"
+es_sources_list: "elasticsearch-2.x"
+es_packages: "elasticsearch"
+es_config_file: "/etc/elasticsearch/elasticsearch.yml"

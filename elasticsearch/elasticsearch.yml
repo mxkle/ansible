@@ -1,0 +1,6 @@
+---
+# playbook to install elasticsearch role
+
+- hosts: elasticsearch
+  roles:
+    - elasticsearch
