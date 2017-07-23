@@ -40,7 +40,6 @@ ansible/
 ```
 #to get every playbook + config files
 git clone git://github.com/mxkle/ansible
-#to get specifig playbooks, use svn
-svn export git://github.com/mxkle/ansible/tree/master/<role>
-
+#to get specific playbooks, use svn
+svn export https://github.com/mxkle/ansible/trunk/<role>
 ```
