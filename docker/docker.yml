@@ -1,2 +1,6 @@
 ---
 # playbook to install docker role
+
+- hosts: docker
+  roles:
+    - docker

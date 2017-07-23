@@ -1,0 +1,44 @@
+---
+#this role installs docker
+
+- name: install docker dependecies
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items: "{{ docker_dependecies }}"
+
+- name: add docker repo key
+  apt_key:
+    url: "{{ docker_repo_key }}"
+    state: present
+
+- name: add docker repo
+  apt_repository:
+    repo: "{{ docker_repo }}"
+    state: present
+
+- name: install docker
+  apt:
+    name: "{{ docker_packages }}"
+    state: present
+    update_cache: yes
+  notify: start docker
+
+- name: install docker-py with python-pip
+  pip:
+   name: docker-py
+
+- name: make persistent dir for portainer
+  file:
+    path: " {{ docker_portainer_dir }}"
+    state: directory
+
+- name: install portainer
+  docker_container:
+    name: portainer
+    image: portainer/portainer
+    ports: "9000:9000"
+    state: started
+    volumes: "/var/run/docker.sock:/var/run/docker.sock"
+    pull: yes

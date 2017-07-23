@@ -1,0 +1,17 @@
+---
+
+docker_dependecies:
+  - "apt-transport-https"
+  - "ca-certificates"
+  - "curl"
+  - "python-software-properties"
+  - "python-virtualenv"
+  - "python-pip"
+
+docker_repo_key: "https://download.docker.com/linux/debian/gpg"
+
+docker_repo: "deb [arch=amd64] https://download.docker.com/linux/debian jessie stable"
+
+docker_packages: "docker-ce"
+
+docker_portainer_dir: "/var/portainer"
