@@ -33,6 +33,7 @@
   file:
     path: " {{ docker_portainer_dir }}"
     state: directory
+    mode: "0775"
 
 - name: install portainer
   docker_container:
