@@ -1,6 +1,0 @@
----
-# playbook to install java role
-
-- hosts: java
-  roles:
-    - java
