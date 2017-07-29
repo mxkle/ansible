@@ -1,0 +1,7 @@
+---
+# handlers for openjdk
+
+- name: restart openjdk
+  service:
+    name: openjdk
+    state: restarted

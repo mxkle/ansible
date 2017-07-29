@@ -1,0 +1,29 @@
+---
+# install graylog
+
+- name: import graylog key
+  apt_key:
+    url: "{{graylog_keyserver}}"
+    state: present
+
+- name: add graylog repo
+  apt_repository:
+    repo: "{{graylog_repo}}"
+    state: present
+    filename: graylog.list
+
+- name: install graylog
+  apt:
+    name: "{{item}}"
+    state: present
+  with_items: "{{graylog_packages}}"
+
+- name: copy server.conf
+  template:
+    src: "../templates/server.conf.j2"
+    dest: "/etc/graylog/server/server.conf"
+    owner: root
+    group: root
+    mode: 0644
+    
+#- include: handlers/main.yml

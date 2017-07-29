@@ -1,0 +1,28 @@
+---
+#vars for graylog
+
+graylog_dependencies:
+  - "uuid-runtime"
+  - "pwgen"
+
+graylog_packages:
+  - "graylog-server"
+
+graylog_repo: "deb https://packages.graylog2.org/repo/debian/ stable 2.3"
+
+graylog_key:
+
+graylog_keyserver: "https://packages.graylog2.org/repo/debian/keyring.gpg"
+
+graylog_node_file: "/etc/graylog/server/node-id"
+
+graylog_password_secret: "EccQNCV285znDd37NyO0yIrIPEPMnGCA8Gdjlc4GAMrxBDMIuZeRnqCrzXstMqf1"
+
+
+graylog_root_password_sha256: "cc170f0b76929c8a4927fb0948aec16e37baadc3bde0fe555d4a433cc14677ab"
+
+graylog_web_listen_uri: "http://10.0.0.10:9090/"
+
+graylog_rest_listen_uri: "http://10.0.0.10:129090/api/"
+
+graylog_root_username : "admin"

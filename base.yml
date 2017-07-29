@@ -1,0 +1,6 @@
+---
+# playbook for deploying base
+
+- hosts : base
+  roles:
+    - base

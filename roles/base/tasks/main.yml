@@ -1,0 +1,14 @@
+---
+# install base
+
+- name: install base_packages
+  apt:
+    name: "{{item}}"
+    state: present
+  with_items: "{{base_packages}}"
+
+- name: apt update
+  apt:
+    update_cache: yes
+
+#- include: handlers/main.yml

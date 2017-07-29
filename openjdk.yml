@@ -1,0 +1,7 @@
+---
+# playbook for deploying openjdk
+
+- hosts : openjdk
+  roles:
+    - base
+    - openjdk
