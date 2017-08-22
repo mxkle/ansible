@@ -1,5 +1,5 @@
-#[local]
-#localhost ansible_connection=local
+[local]
+localhost ansible_connection=local
 
 [graylog]
 10.0.0.10
