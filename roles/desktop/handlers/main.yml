@@ -1,0 +1,13 @@
+---
+# handlers for desktop
+
+- name: restart desktop
+  service:
+    name: desktop
+    state: restarted
+
+- name: start desktop
+  service:
+    name: desktop
+    state: started
+

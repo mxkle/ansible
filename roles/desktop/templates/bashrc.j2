@@ -1,0 +1,16 @@
+shrc
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls -p --color=never'
+alias tmux='tmux -f {{ansible_user_dir}}/.config/tmux/tmux.conf'
+alias vim='nvim'
+
+function 4chnd() {
+	curl -s $@ | grep  -oP 'i\.4cdn\.org\/[\w\d]+\/[\w\d]+(?<!s)\.(jpg|png|jpeg|webm|gif)' |\
+	xargs wget -q --progress=bar --show-progress -c --random-wait -P {{ansible_user_dir}}/downloads/4chnd/
+}
+PS1='[\u@\h \W]\$ '
+
+export XDG_CONFIG_HOME="$HOME/.config"

@@ -1,0 +1,8 @@
+---
+# playbook for deploying desktop
+
+- hosts : desktop
+  roles:
+    - base
+    - desktop
+
