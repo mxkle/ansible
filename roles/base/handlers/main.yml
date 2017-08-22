@@ -1,0 +1,7 @@
+---
+# handlers for base
+
+- name: restart base
+  service:
+    name: base
+    state: restarted

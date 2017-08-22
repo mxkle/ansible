@@ -1,0 +1,7 @@
+---
+# playbook for deploying elasticsearch
+
+- hosts : elasticsearch
+  roles:
+    - base
+    - elasticsearch

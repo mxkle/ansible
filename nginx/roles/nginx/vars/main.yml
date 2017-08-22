@@ -1,9 +1,0 @@
----
-
-nginx_repo:
-  - "deb http://nginx.org/packages/debian/ jessie nginx"
-  - "deb-src http://nginx.org/packages/debian/ jessie nginx"
-
-nginx_key: "https://nginx.org/keys/nginx_signing.key"
-
-nginx_packages: "nginx"

@@ -1,0 +1,22 @@
+---
+# install mongodb
+
+- name: import mongodb key
+  apt_key:
+    keyserver: "{{mongodb_keyserver}}"
+    id: "{{mongodb_key}}"
+    state: present
+
+- name: add mongodb repo
+  apt_repository:
+    repo: "{{mongodb_repo}}"
+    state: present
+    filename: mongodb-org-3.4.list
+
+- name: install mongodb
+  apt:
+    name: "{{item}}"
+    state: present
+  with_items: "{{mongodb_packages}}"
+
+- include: handlers/main.yml

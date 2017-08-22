@@ -1,6 +1,0 @@
----
-# playbook to install mongodb role
-
-- hosts: mongodb
-  roles:
-    - mongodb

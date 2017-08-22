@@ -3,37 +3,31 @@ ansible playbooks for testing/leaning purpose
 
 # directory layout
 ```
-ansible/
+.
 ├── ansible.cfg
+├── base.yml
+├── elasticsearch.yml
 ├── hosts
-├── base
-│   ├── base.yml
-│   └── roles
-│       └── base
-│           ├── handlers
-│           ├── tasks
-│           └── vars
-├── graylog
-│   ├── graylog.yml
-│   └── roles
-│       ├── elasticsearch
-│       │   ├── handlers
-│       │   │   └── main.yml
-│       │   ├── tasks
-│       │   │   └── main.yml
-│       │   └── vars
-│       │       └── main.yml
-│       ├── graylog
-│       │   ├── handlers
-│       │   │   └── main.yml
-│       │   ├── tasks
-│       │   │   └── main.yml
-│       │   └── vars
-│       │       └── main.yml
-│       ├── ...
-│       │   ├── ...
-| ...
-...
+├── init_ansible.sh
+├── README.md
+└── roles
+    ├── base
+    │   ├── handlers
+    │   │   └── main.yml
+    │   ├── tasks
+    │   │   └── main.yml
+    │   └── vars
+    │       └── main.yml
+    ├── elasticsearch
+    │   ├── handlers
+    │   │   └── main.yml
+    │   ├── tasks
+    │   │   └── main.yml
+    │   ├── templates
+    │   │   └── elasticsearch.yml.j2
+    │   └── vars
+    │       └── main.yml
+    ...
 ```
 
 # usage

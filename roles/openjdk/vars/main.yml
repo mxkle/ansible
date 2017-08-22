@@ -1,0 +1,13 @@
+---
+#vars for openjdk
+
+openjdk_dependencies:
+
+openjdk_packages:
+  - "openjdk-8-jre"
+
+openjdk_repo: "deb http://ftp.debian.org/debian jessie-backports main"
+
+openjdk_key:
+
+openjdk_keyserver:

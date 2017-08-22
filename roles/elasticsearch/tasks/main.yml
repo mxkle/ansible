@@ -1,0 +1,28 @@
+---
+# install elasticsearch
+
+- name: import elasticsearch key
+  apt_key:
+    url: "{{elasticsearch_keyserver}}"
+    state: present
+
+- name: add elasticsearch repo
+  apt_repository:
+    repo: "{{elasticsearch_repo}}"
+    state: present
+
+- name: install elasticsearch
+  apt:
+    name: "{{item}}"
+    state: present
+  with_items: "{{elasticsearch_packages}}"
+
+- name: copy elasticsearch.yml
+  template:
+    src: "../templates/elasticsearch.yml.j2"
+    dest: "/etc/elasticsearch/elasticsearch.yml"
+    owner: root
+    group: elasticsearch
+    mode: 0660
+    
+- include: handlers/main.yml

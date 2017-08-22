@@ -1,9 +1,0 @@
----
-# playbook to install graylog
-
-- hosts: graylog
-  roles:
-    - elasticsearch
-    - java
-    - mongodb
-    - graylog
