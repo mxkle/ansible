@@ -1,4 +1,4 @@
-[local]
+[desktop]
 localhost ansible_connection=local
 
 [graylog]

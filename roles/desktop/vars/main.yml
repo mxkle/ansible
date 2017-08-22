@@ -9,12 +9,16 @@ desktop_packages:
   - "mpv"
   - "curl"
 
-desktop_dotfile_paths:
+desktop_dotfiles:
   - { dest: '~/.Xresources', file: 'Xresources.j2'}
-  - { dest: '~/Xresources.colors.', file: 'Xresources.colors.j2'}
+  - { dest: '~/.Xresources.colors', file: 'Xresources.colors.j2'}
   - { dest: '~/.bashrc', file: 'bashrc.j2'}
   - { dest: '~/.xinitrc', file: 'xinitrc.j2'}
   - { dest: '~/.config/nvim/init.vim', file: 'init.vim.j2'}
   - { dest: '~/.config/tmux/tmux.conf', file: 'tmux.conf.j2'}
+
+desktop_conf_dir:
+  - "~/.config/nvim"
+  - "~/.config/tmux"
 
 

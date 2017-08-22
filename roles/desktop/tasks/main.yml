@@ -6,12 +6,25 @@
     name: "{{item}}"
     state: present
     update_cache: true
-   with_items: "{{desktop_packages}}"
+  with_items: "{{desktop_packages}}"
+  become: true
 
 - name: install vim-plug
   shell: curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+- name: create config directorys
+  file:
+    path: "{{item}}"
+    state: directory
+    recurse: yes
+  with_items: "{{desktop_conf_dir}}"
+    
 - name: link dotfiles in user home dir
+  file:
+    src: "{{role_path}}/templates/{{item.file}}"
+    dest: '{{item.dest}}'
+    state: link
+  with_items: "{{desktop_dotfiles}}"
 
 #- include: handlers/main.yml
 
