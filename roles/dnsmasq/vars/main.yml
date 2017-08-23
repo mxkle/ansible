@@ -1,0 +1,6 @@
+---
+#vars for dnsmasq
+
+dnsmasq_packages:
+  - "dnsmasq"
+

@@ -1,0 +1,8 @@
+---
+# playbook for deploying dnsmasq
+
+- hosts : dnsmasq
+  roles:
+    - base
+    - dnsmasq
+

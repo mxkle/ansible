@@ -1,0 +1,13 @@
+---
+# handlers for dnsmasq
+
+- name: restart dnsmasq
+  service:
+    name: dnsmasq
+    state: restarted
+
+- name: start dnsmasq
+  service:
+    name: dnsmasq
+    state: started
+
