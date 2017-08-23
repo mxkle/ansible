@@ -18,6 +18,18 @@
     state: directory
     recurse: yes
   with_items: "{{desktop_conf_dir}}"
+
+- name: install source-code-pro from github
+  git:
+    repo: https://github.com/adobe-fonts/source-code-pro.git
+    dest: /usr/share/fonts/adobe-fonts/source-code-pro
+    accept_hostkey: yes
+    version: release
+    clone: yes
+  become: true
+
+- name: update font cache
+  shell: fc-cache -f -v /usr/share/fonts/adobe-fonts/source-code-pro
     
 - name: link dotfiles in user home dir
   file:

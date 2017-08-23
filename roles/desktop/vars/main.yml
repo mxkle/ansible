@@ -8,6 +8,9 @@ desktop_packages:
   - "tmux"
   - "mpv"
   - "curl"
+  - "xmonad"
+  - "rofi"
+  - "ranger"
 
 desktop_dotfiles:
   - { dest: '~/.Xresources', file: 'Xresources.j2'}
