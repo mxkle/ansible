@@ -13,5 +13,11 @@
     dest: /etc/dnsmasq.conf
     mode: 0644
 
+- name: copy resolv.conf
+  template:
+    src: ../templates/resolv.conf.j2
+    dest: /etc/resolv.conf
+    mode: 0644
+
 - include: handlers/main.yml
 
