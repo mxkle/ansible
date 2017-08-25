@@ -19,9 +19,11 @@ desktop_dotfiles:
   - { dest: '~/.xinitrc', file: 'xinitrc.j2'}
   - { dest: '~/.config/nvim/init.vim', file: 'init.vim.j2'}
   - { dest: '~/.config/tmux/tmux.conf', file: 'tmux.conf.j2'}
+  - { dest: '~/.xmonad/xmonad.hs', file: 'xmonad.hs.j2'}
 
 desktop_conf_dir:
   - "~/.config/nvim"
   - "~/.config/tmux"
+  - "~/.xmonad"
 
 

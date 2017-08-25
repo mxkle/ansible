@@ -1,0 +1,14 @@
+---
+#vars for docker
+
+docker_dependencies:
+
+docker_packages:
+
+docker_repo:
+
+docker_key:
+
+docker_keyserver:
+
+

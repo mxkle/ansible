@@ -3,5 +3,4 @@
 
 - hosts : openjdk
   roles:
-    - base
     - openjdk

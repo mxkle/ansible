@@ -3,3 +3,6 @@ localhost ansible_connection=local
 
 [dnsmasq]
 10.0.0.5
+
+[docker]
+vm-101.virtual.lan

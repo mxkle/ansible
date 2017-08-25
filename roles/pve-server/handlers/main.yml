@@ -1,0 +1,13 @@
+---
+# handlers for pve-server
+
+- name: restart pve-server
+  service:
+    name: pve-server
+    state: restarted
+
+- name: start pve-server
+  service:
+    name: pve-server
+    state: started
+

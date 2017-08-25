@@ -1,0 +1,7 @@
+---
+# playbook for deploying pve-server
+
+- hosts : pve-server
+  roles:
+    - pve-server
+

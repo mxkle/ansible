@@ -3,5 +3,4 @@
 
 - hosts : mongodb
   roles:
-    - base
     - mongodb

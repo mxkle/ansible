@@ -3,9 +3,7 @@
 
 - hosts : graylog
   roles:
-    - base
-    - role: openjdk
-      openjdk_packages: openjdk-8-jre-headless
+    - openjdk
     - elasticsearch
     - mongodb
     - graylog

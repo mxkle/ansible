@@ -9,9 +9,6 @@
   with_items: "{{desktop_packages}}"
   become: true
 
-- name: install vim-plug
-  shell: curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
 - name: create config directorys
   file:
     path: "{{item}}"
@@ -19,10 +16,16 @@
     recurse: yes
   with_items: "{{desktop_conf_dir}}"
 
+- name: install vim-plug
+  get_url:
+    url: "{{desktop_vim-plug.link}}"
+    dest: "{{desktop_vim-plug.dest}}"
+    mode: 0755
+
 - name: install source-code-pro from github
   git:
-    repo: https://github.com/adobe-fonts/source-code-pro.git
-    dest: /usr/share/fonts/adobe-fonts/source-code-pro
+    repo: "{{desktop_font.link}}"
+    dest: "{{desktop_font.dest}}"
     accept_hostkey: yes
     version: release
     clone: yes
@@ -30,6 +33,43 @@
 
 - name: update font cache
   shell: fc-cache -f -v /usr/share/fonts/adobe-fonts/source-code-pro
+
+- name: check if qutebrowser is installed
+  command: dpkg-query -W qutebrowser
+  register: "qutebrowser_check"
+  failed_when: "qutebrowser_check" > 1
+  changed_when: "qutebrowser_check" == 1
+
+- name: install qutebrowser dependencies
+  apt:
+    name: "{{item}}"
+    state: present
+    become: true
+  with_items: "{{desktop_qutebrowser.dependencies}}"
+  when: qutebrowser_check == 1
+
+- name: download pypeg2
+  get_url:
+    url: "{{desktop_qutebrowser.pypeg2_link}}"
+    dest: "{{desktop_qutebrowser.pypeg2_dest}}"
+    mode: 0755
+  when: qutebrowser_check == 1
+
+- name: download qutebrowser 
+  get_url:
+    url: "{{desktop_qutebrowser.qutebrowser_link}}"
+    dest: "{{desktop_qutebrowser.qutebrowser_dest}}"
+    mode: 0755
+  when: qutebrowser_check == 1
+
+- name: install pypeg2 and qutebrowser
+  apt:
+    deb: "{{item}}"
+    state: present
+  with_items: 
+    - "{{desktop_qutebrowser.qutebrowser_dest}}"
+    - "{{desktop_qutebrowser.pypeg2_link}}"
+  become: true
     
 - name: link dotfiles in user home dir
   file:

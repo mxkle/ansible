@@ -1,8 +1,15 @@
 bogus-priv
+expand-hosts
+domain-needed
 listen-address=127.0.0.1
 listen-address={{ansible_default_ipv4.address}}
 local=/virtual.lan/
+domain=virtual.lan
+log-queries=/var/log/dnsmasq.log
+dhcp-authoritative
 
-dhcp-range=10.0.0.10,10.0.0.50,12h
-dhcp-option=3,{{ansible_default_ipv4.address}}
+interface={{ansible_default_ipv4.interface}}
+dhcp-range=10.0.0.10,10.0.0.30,12h
+dhcp-option=3,{{ansible_default_ipv4.gateway}}
+dhcp-option=6,{{ansible_default_ipv4.address}}
 

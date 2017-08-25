@@ -3,6 +3,5 @@
 
 - hosts : dnsmasq
   roles:
-    - base
     - dnsmasq
 

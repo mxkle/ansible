@@ -12,7 +12,7 @@ echo "$role"
 
 ## create base dir and playbook
 
-mkdir -p roles/"$role"/{handlers,tasks,vars}
+mkdir -p roles/"$role"/{handlers,tasks,vars,templates}
 echo "---
 # playbook for deploying "$role"
 

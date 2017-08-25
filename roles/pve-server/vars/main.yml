@@ -1,0 +1,14 @@
+---
+#vars for pve-server
+
+pve-server_dependencies:
+
+pve-server_packages:
+
+pve-server_repo:
+
+pve-server_key:
+
+pve-server_keyserver:
+
+

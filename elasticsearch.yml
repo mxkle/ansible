@@ -3,5 +3,4 @@
 
 - hosts : elasticsearch
   roles:
-    - base
     - elasticsearch
