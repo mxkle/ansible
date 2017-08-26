@@ -36,53 +36,49 @@
 - name: update font cache
   shell: fc-cache -f -v /usr/share/fonts/adobe-fonts/source-code-pro
 
-- name: install qutebrowser
-  become: true
-  tasks:
+- name: check if qutebrowser is installed
+  command: dpkg -s qutebrowser | grep 'install ok installed'
+  register: "qutebrowser_check"
+  failed_when: '"qutebrowser_check" > 1'
+  changed_when: no
 
-  - name: check if qutebrowser is installed
-    command: dpkg -s qutebrowser | grep 'install ok installed'
-    register: "qutebrowser_check"
-    failed_when: '"qutebrowser_check" > 1'
-    changed_when: no
-
-  - name: install qutebrowser dependencies
-    apt:
-      name: "{{item}}"
-      state: present
-      become: true
-    with_items: "{{desktop_qutebrowser.dependencies}}"
-    when: qutebrowser_check == 0
-
-  - name: download pypeg2
-    get_url:
-      url: "{{item[0]}}"
-      dest: "{{item[1]}}"
-      mode: 0755
-    with_items: 
-      - "{{desktop_qutebrowser.pypeg2_link}}"
-      - "{{desktop_qutebrowser.pypeg2_dest}}"
-    when: qutebrowser_check == 0
-
-  - name: download qutebrowser 
-    get_url:
-      url: "{{item[0]}}"
-      dest: "{{item[1]}}"
-      mode: 0755
-    with_items: 
-      - "{{desktop_qutebrowser.qutebrowser_link}}"
-      - "{{desktop_qutebrowser.qutebrowser_dest}}"
-    when: qutebrowser_check == 0
-
-  - name: install pypeg2 and qutebrowser
-    apt:
-      deb: "{{item}}"
-      state: present
-    with_items: 
-      - "{{desktop_qutebrowser.qutebrowser_dest}}"
-      - "{{desktop_qutebrowser.pypeg2_dest}}"
+- name: install qutebrowser dependencies
+  apt:
+    name: "{{item}}"
+    state: present
     become: true
-    when: qutebrowser_check == 0
+  with_items: "{{desktop_qutebrowser.dependencies}}"
+  when: qutebrowser_check == 0
+
+- name: download pypeg2
+  get_url:
+    url: "{{item[0]}}"
+    dest: "{{item[1]}}"
+    mode: 0755
+  with_items: 
+    - "{{desktop_qutebrowser.pypeg2_link}}"
+    - "{{desktop_qutebrowser.pypeg2_dest}}"
+  when: qutebrowser_check == 0
+
+- name: download qutebrowser 
+  get_url:
+    url: "{{item[0]}}"
+    dest: "{{item[1]}}"
+    mode: 0755
+  with_items: 
+    - "{{desktop_qutebrowser.qutebrowser_link}}"
+    - "{{desktop_qutebrowser.qutebrowser_dest}}"
+  when: qutebrowser_check == 0
+
+- name: install pypeg2 and qutebrowser
+  apt:
+    deb: "{{item}}"
+    state: present
+  with_items: 
+    - "{{desktop_qutebrowser.qutebrowser_dest}}"
+    - "{{desktop_qutebrowser.pypeg2_dest}}"
+  become: true
+  when: qutebrowser_check == 0
       
 - name: link dotfiles in user home dir
   file:
