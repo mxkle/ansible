@@ -37,8 +37,8 @@
 - name: check if qutebrowser is installed
   command: dpkg-query -W qutebrowser
   register: "qutebrowser_check"
-  failed_when: "qutebrowser_check" > 1
-  changed_when: "qutebrowser_check" == 1
+  failed_when: '"qutebrowser_check" > 1'
+  changed_when: '"qutebrowser_check" == 1'
 
 - name: install qutebrowser dependencies
   apt:
