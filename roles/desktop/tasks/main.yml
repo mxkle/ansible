@@ -18,9 +18,10 @@
 
 - name: install vim-plug
   get_url:
-    url: "{{desktop_vim-plug.link}}"
-    dest: "{{desktop_vim-plug.dest}}"
+    url: "{{item.link}}"
+    dest: "{{item.dest}}"
     mode: 0755
+  with_items: "{{desktop_vim_plug}}"
 
 - name: install source-code-pro from github
   git:

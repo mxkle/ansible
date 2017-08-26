@@ -25,6 +25,7 @@ desktop_conf_dir:
   - "~/.config/nvim"
   - "~/.config/tmux"
   - "~/.xmonad"
+  - "~/.local/share/nvim/site/autoload"
 
 desktop_vim-plug:
   - { dest: '~/.local/share/nvim/site/autoload/plug.vim', link: 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'}
