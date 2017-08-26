@@ -68,7 +68,7 @@
     state: present
   with_items: 
     - "{{desktop_qutebrowser.qutebrowser_dest}}"
-    - "{{desktop_qutebrowser.pypeg2_link}}"
+    - "{{desktop_qutebrowser.pypeg2_dest}}"
   become: true
     
 - name: link dotfiles in user home dir
