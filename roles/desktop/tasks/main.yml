@@ -25,11 +25,12 @@
 
 - name: install source-code-pro from github
   git:
-    repo: "{{desktop_font.link}}"
-    dest: "{{desktop_font.dest}}"
+    repo: "{{item.link}}"
+    dest: "{{item.dest}}"
     accept_hostkey: yes
     version: release
     clone: yes
+  with_items: "{{desktop_font}}"
   become: true
 
 - name: update font cache
@@ -51,16 +52,22 @@
 
 - name: download pypeg2
   get_url:
-    url: "{{desktop_qutebrowser.pypeg2_link}}"
-    dest: "{{desktop_qutebrowser.pypeg2_dest}}"
+    url: "{{item[0]}}"
+    dest: "{{item[1]}}"
     mode: 0755
+  with_items: 
+    - "{{desktop_qutebrowser.pypeg2_link}}"
+    - "{{desktop_qutebrowser.pypeg2_dest}}"
   when: qutebrowser_check == 1
 
 - name: download qutebrowser 
   get_url:
-    url: "{{desktop_qutebrowser.qutebrowser_link}}"
-    dest: "{{desktop_qutebrowser.qutebrowser_dest}}"
+    url: "{{item[0]}}"
+    dest: "{{item[1]}}"
     mode: 0755
+  with_items: 
+    - "{{desktop_qutebrowser.qutebrowser_link}}"
+    - "{{desktop_qutebrowser.qutebrowser_dest}}"
   when: qutebrowser_check == 1
 
 - name: install pypeg2 and qutebrowser
