@@ -42,50 +42,17 @@
   failed_when: '"qutebrowser_check" > 1'
   changed_when: no
 
-- name: install qutebrowser dependencies
-  apt:
-    name: "{{item}}"
-    state: present
-    become: true
-  with_items: "{{desktop_qutebrowser.dependencies}}"
-  when: qutebrowser_check == 0
+- name: install qutebrowser if necessary
+  include: qutebrowser.yml
+  when: '"qutebrowser_chek" == 1'
 
-- name: download pypeg2
-  get_url:
-    url: "{{item[0]}}"
-    dest: "{{item[1]}}"
-    mode: 0755
-  with_items: 
-    - "{{desktop_qutebrowser.pypeg2_link}}"
-    - "{{desktop_qutebrowser.pypeg2_dest}}"
-  when: qutebrowser_check == 0
-
-- name: download qutebrowser 
-  get_url:
-    url: "{{item[0]}}"
-    dest: "{{item[1]}}"
-    mode: 0755
-  with_items: 
-    - "{{desktop_qutebrowser.qutebrowser_link}}"
-    - "{{desktop_qutebrowser.qutebrowser_dest}}"
-  when: qutebrowser_check == 0
-
-- name: install pypeg2 and qutebrowser
-  apt:
-    deb: "{{item}}"
-    state: present
-  with_items: 
-    - "{{desktop_qutebrowser.qutebrowser_dest}}"
-    - "{{desktop_qutebrowser.pypeg2_dest}}"
-  become: true
-  when: qutebrowser_check == 0
-      
-- name: link dotfiles in user home dir
-  file:
+- name: link dotfiles
+  template:
     src: "{{role_path}}/templates/{{item.file}}"
-    dest: '{{item.dest}}'
+    destL "{{item.dest}}"
     state: link
   with_items: "{{desktop_dotfiles}}"
+
 
 #- include: handlers/main.yml
 

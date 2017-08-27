@@ -1,0 +1,7 @@
+---
+# playbook for deploying webmin
+
+- hosts : webmin
+  roles:
+    - webmin
+

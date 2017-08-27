@@ -1,0 +1,22 @@
+---
+# install webmin
+
+- name: import webmin key
+  apt_key:
+    url: "{{webmin_keyserver}}"
+    state: present
+
+- name: add webmin repo
+  apt_repository:
+    repo: "{{webmin_repo}}"
+    state: present
+    filename: webmin.list
+
+- name: install webmin
+  apt:
+    name: "{{item}}"
+    state: present
+  with_items: "{{webmin_packages}}"
+
+#- include: handlers/main.yml
+

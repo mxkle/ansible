@@ -1,4 +1,6 @@
 call plug#begin('~/.local/share/nvim/plugged')
+Plug 'zchee/deoplete-jedi'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 call plug#end()
 
 let base16colorspace=256
@@ -38,3 +40,5 @@ set smarttab
 map <leader>tn :tabnew<cr>
 map <leader>tc :tabclose<cr>
 map <leader>t<leader> :tabnext 
+
+let g:deoplete#enable_at_startup = 1

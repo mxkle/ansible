@@ -1,0 +1,13 @@
+---
+# handlers for webmin
+
+- name: restart webmin
+  service:
+    name: webmin
+    state: restarted
+
+- name: start webmin
+  service:
+    name: webmin
+    state: started
+

@@ -1,0 +1,21 @@
+---
+# mount nfs shares 
+
+- hosts: all
+  become: true
+
+  tasks:
+
+  - name: mount /mnt/trades from proxmox host
+    path: 192.168.178.80:/mnt/trades
+    src: /mnt/trades
+    state: mounted
+    opts: rw,sync,soft
+    fstype: nfs
+
+  - name: add fstab entry for /mnt/trades
+    path: 192.168.178.80:/mnt/trades
+    src: /mnt/trades
+    state: present
+    opts: rw,sync,soft
+    fstype: nfs

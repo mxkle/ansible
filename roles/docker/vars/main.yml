@@ -2,13 +2,24 @@
 #vars for docker
 
 docker_dependencies:
+  - "apt-transport-https"
+  - "curl"
+  - "gnupg2"
+  - "ca-certificates"
+  - "software-properties-common"
+  - "python-pip"
 
 docker_packages:
+  - "docker-ce"
+  - "docker-compose"
 
-docker_repo:
+docker_pip_packages:
+  - "docker-py"
+
+docker_repo: "deb [arch=amd64] https://download.docker.com/linux/debian stretch stable"
 
 docker_key:
 
-docker_keyserver:
+docker_keyserver: "https://download.docker.com/linux/debian/gpg"
 
 

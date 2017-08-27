@@ -1,5 +1,44 @@
 ---
 # install docker
 
+- name: install docker dependencies
+  apt:
+    name: "{{item}}"
+    state: present
+  with_items: "{{docker_dependencies}}"
+
+- name: import docker key
+  apt_key:
+    url: "{{docker_keyserver}}"
+    state: present
+
+- name: add docker repo
+  apt_repository:
+    repo: "{{docker_repo}}"
+    state: present
+
+- name: install docker
+  apt:
+    name: "{{item}}"
+    state: present
+  with_items: "{{docker_packages}}"
+
+- name: install docker-py via pip
+  pip:
+    name: "{{item}}"
+  with_items: "{{docker_pip_packages}}"
+
+- name: install portainer
+  docker_container:
+    name: portainer
+    image: portainer/portainer
+    state: started 
+    detach: true
+    published_ports:
+      - "9000:9000"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/opt/portainer:/data"
+
 - include: handlers/main.yml
 

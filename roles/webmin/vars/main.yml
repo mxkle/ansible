@@ -1,0 +1,14 @@
+---
+#vars for webmin
+
+webmin_dependencies:
+
+webmin_packages:
+  - "webmin"
+
+webmin_repo: "deb http://download.webmin.com/download/repository sarge contrib"
+
+webmin_key:
+
+webmin_keyserver: "http://www.webmin.com/jcameron-key.asc"
+

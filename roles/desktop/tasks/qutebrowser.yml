@@ -1,0 +1,37 @@
+---
+# install qutebrowser
+
+  - name: install qutebrowser dependencies
+    apt:
+      name: "{{item}}"
+      state: present
+      become: true
+    with_items: "{{desktop_qutebrowser.dependencies}}"
+
+  - name: download pypeg2
+    get_url:
+      url: "{{item[0]}}"
+      dest: "{{item[1]}}"
+      mode: 0755
+    with_items: 
+      - "{{desktop_qutebrowser.pypeg2_link}}"
+      - "{{desktop_qutebrowser.pypeg2_dest}}"
+
+  - name: download qutebrowser 
+    get_url:
+      url: "{{item[0]}}"
+      dest: "{{item[1]}}"
+      mode: 0755
+    with_items: 
+      - "{{desktop_qutebrowser.qutebrowser_link}}"
+      - "{{desktop_qutebrowser.qutebrowser_dest}}"
+
+  - name: install pypeg2 and qutebrowser
+    apt:
+      deb: "{{item}}"
+      state: present
+    with_items: 
+      - "{{desktop_qutebrowser.qutebrowser_dest}}"
+      - "{{desktop_qutebrowser.pypeg2_dest}}"
+    become: true
+

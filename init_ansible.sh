@@ -18,7 +18,6 @@ echo "---
 
 - hosts : "$role"
   roles:
-    - base
     - "$role"
 " > "$role".yml
 
@@ -31,11 +30,6 @@ echo "---
   service:
     name: "$role"
     state: restarted
-
-- name: start "$role"
-  service:
-    name: "$role"
-    state: started
 " > roles/"$role"/handlers/main.yml
 
 ## default tasks
