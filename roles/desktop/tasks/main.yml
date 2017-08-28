@@ -37,19 +37,23 @@
   shell: fc-cache -f -v /usr/share/fonts/adobe-fonts/source-code-pro
 
 - name: check if qutebrowser is installed
-  command: dpkg -s qutebrowser | grep 'install ok installed'
+  command: dpkg -s qutebrowser | grep 'installed'
   register: "qutebrowser_check"
-  failed_when: '"qutebrowser_check" > 1'
-  changed_when: no
+  ignore_errors: true
 
-- name: install qutebrowser if necessary
-  include: qutebrowser.yml
-  when: '"qutebrowser_chek" == 1'
+- name: print var
+  debug:
+    msg: "qutebrowser installed? A: {{qutebrowser_check}}"
+  when: "qutebrowser_check == 1"
+
+#- name: install qutebrowser if necessary
+#  include: qutebrowser.yml
+#  when: '"qutebrowser_check" == 1'
 
 - name: link dotfiles
   template:
     src: "{{role_path}}/templates/{{item.file}}"
-    destL "{{item.dest}}"
+    dest: "{{item.dest}}"
     state: link
   with_items: "{{desktop_dotfiles}}"
 
