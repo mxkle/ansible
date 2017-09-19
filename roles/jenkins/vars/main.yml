@@ -1,0 +1,14 @@
+---
+#vars for jenkins
+
+jenkins_dependencies:
+  - "openjdk-8-jre"
+
+jenkins_packages:
+  - "jenkins"
+
+jenkins_repo: "deb http://pkg.jenkins.io/debian-stable binary/"
+
+jenkins_key:
+
+jenkins_keyserver: "https://pkg.jenkins.io/debian/jenkins.io.key"

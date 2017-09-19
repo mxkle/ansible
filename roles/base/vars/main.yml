@@ -8,6 +8,8 @@ base_packages:
   - "vim"
   - "htop"
   - "net-tools"
+  - "curl"
+  - "wget"
 
 base_repo:
 

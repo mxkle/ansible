@@ -1,0 +1,11 @@
+---
+# playbook for deploying jenkins
+
+- hosts : jenkins
+  vars:
+    ssh_users:
+      - max
+  roles:
+    - base
+    - docker
+    - jenkins

@@ -1,0 +1,27 @@
+---
+# install sshd
+
+- name: allow password-less login for root
+  lineinfile:
+    name: /etc/ssh/sshd_config
+    regexp: '^#PermitRootLogin'
+    line: 'PermitRootLogin without-password'
+
+- name: disable password-based login for everyone
+  lineinfile:
+    name: /etc/ssh/sshd_config
+    regexp: '^#PasswordAuthentication'
+    line: 'PasswordAuthentication no'
+
+- name: copy pub ssh keys of allowed users
+  authorized_key:
+    user: root
+    state: present
+    key: "{{lookup('pipe', '../ssh_keys/{{item}}/id_rsa.pub')}}"
+    exclusive: true
+  with_items: "{{ssh_users}}"
+
+- name: restart sshd
+  service:
+    name: sshd
+    state: restarted

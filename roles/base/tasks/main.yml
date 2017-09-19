@@ -11,4 +11,4 @@
   apt:
     update_cache: yes
 
-#- include: handlers/main.yml
+- include: sshd.yml

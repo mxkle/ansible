@@ -6,3 +6,6 @@ vm-100.virtual.lan
 
 [docker]
 vm-101.virtual.lan
+
+[jenkins]
+vm-103.virtual.lan

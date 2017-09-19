@@ -1,8 +1,6 @@
 ---
 # playbook for deploying base
 
-- include: sshd.yml
-
 - hosts : all 
   roles:
     - base

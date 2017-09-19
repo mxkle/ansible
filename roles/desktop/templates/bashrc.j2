@@ -8,9 +8,10 @@ alias tmux='tmux -f ~/.config/tmux/tmux.conf'
 alias vim='nvim'
 
 function 4chnd() {
-	curl -s $@ | grep  -oP 'i\.4cdn\.org\/[\w\d]+\/[\w\d]+(?<!s)\.(jpg|png|jpeg|webm|gif)' |\
-	xargs wget -q --progress=bar --show-progress -c --random-wait -P ~/downloads/4chnd/
+	curl -s $1 | grep  -oP 'i\.4cdn\.org\/[\w\d]+\/[\w\d]+(?<!s)\.(jpg|png|jpeg|webm|gif)' |\
+	xargs wget -q --progress=bar --show-progress -c --random-wait -P $2
 }
 PS1='[\u@\h \W]\$ '
 
 export XDG_CONFIG_HOME="$HOME/.config"
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/bin:~/.cabal/bin
