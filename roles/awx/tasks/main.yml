@@ -1,0 +1,5 @@
+---
+# install awx
+
+- include: handlers/main.yml
+

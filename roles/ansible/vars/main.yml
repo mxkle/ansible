@@ -1,0 +1,14 @@
+---
+#vars for ansible
+
+ansible_dependencies:
+
+ansible_packages:
+
+ansible_repo:
+
+ansible_key:
+
+ansible_keyserver:
+
+

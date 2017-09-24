@@ -1,0 +1,14 @@
+---
+#vars for icinga
+
+icinga_dependencies:
+
+icinga_packages:
+
+icinga_repo:
+
+icinga_key:
+
+icinga_keyserver:
+
+

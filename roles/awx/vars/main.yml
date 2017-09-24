@@ -1,0 +1,17 @@
+---
+#vars for awx
+
+awx_dependencies:
+  - "make"
+  - "git"
+
+awx_packages:
+
+awx_repo:
+  
+awx_key:
+
+awx_keyserver:
+
+awx_git_repo: "https://github.com/ansible/awx"
+

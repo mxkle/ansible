@@ -2,10 +2,14 @@
 localhost ansible_connection=local
 
 [dnsmasq]
-vm-100.virtual.lan
+dnsmasq.virtual.lan
 
 [docker]
-vm-101.virtual.lan
+docker.virtual.lan
+awx.virtual.lan
 
 [jenkins]
-vm-103.virtual.lan
+jenkins.virtual.lan
+
+[awx]
+awx.virtual.lan

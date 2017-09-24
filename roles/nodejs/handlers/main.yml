@@ -1,0 +1,8 @@
+---
+# handlers for nodejs
+
+- name: restart nodejs
+  service:
+    name: nodejs
+    state: restarted
+

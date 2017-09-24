@@ -1,0 +1,7 @@
+---
+# playbook for deploying icinga
+
+- hosts : icinga
+  roles:
+    - icinga
+

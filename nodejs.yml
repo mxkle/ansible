@@ -1,0 +1,7 @@
+---
+# playbook for deploying nodejs
+
+- hosts : nodejs
+  roles:
+    - nodejs
+

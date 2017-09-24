@@ -1,0 +1,7 @@
+---
+# playbook for deploying ansible
+
+- hosts : ansible
+  roles:
+    - ansible
+

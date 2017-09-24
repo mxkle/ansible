@@ -1,0 +1,8 @@
+---
+# handlers for awx
+
+- name: restart awx
+  service:
+    name: awx
+    state: restarted
+

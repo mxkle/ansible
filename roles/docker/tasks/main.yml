@@ -28,17 +28,5 @@
     name: "{{item}}"
   with_items: "{{docker_pip_packages}}"
 
-- name: install portainer
-  docker_container:
-    name: portainer
-    image: portainer/portainer
-    state: started 
-    detach: true
-    published_ports:
-      - "9000:9000"
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
-      - "/opt/portainer:/data"
-
 - include: handlers/main.yml
 

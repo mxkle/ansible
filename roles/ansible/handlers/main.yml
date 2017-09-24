@@ -1,0 +1,8 @@
+---
+# handlers for ansible
+
+- name: restart ansible
+  service:
+    name: ansible
+    state: restarted
+

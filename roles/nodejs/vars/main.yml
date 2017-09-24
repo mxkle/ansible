@@ -1,0 +1,14 @@
+---
+#vars for nodejs
+
+nodejs_dependencies:
+
+nodejs_packages:
+
+nodejs_repo:
+
+nodejs_key:
+
+nodejs_keyserver:
+
+

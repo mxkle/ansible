@@ -1,0 +1,7 @@
+---
+# playbook for deploying awx
+
+- hosts : awx
+  roles:
+    - awx
+

@@ -1,0 +1,8 @@
+---
+# handlers for icinga
+
+- name: restart icinga
+  service:
+    name: icinga
+    state: restarted
+

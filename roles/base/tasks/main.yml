@@ -1,6 +1,11 @@
 ---
 # install base
 
+- name: set hostname
+  hostname:
+    name: "{{hostname}}"
+  when: hostname is defined
+
 - name: install base_packages
   apt:
     name: "{{item}}"
@@ -10,5 +15,11 @@
 - name: apt update
   apt:
     update_cache: yes
+
+- name: remove template user
+  user:
+    name: template
+    state: present
+    shell: /bin/false
 
 - include: sshd.yml

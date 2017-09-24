@@ -13,12 +13,16 @@
     regexp: '^#PasswordAuthentication'
     line: 'PasswordAuthentication no'
 
+- name: delete authorized_keys file for user root
+  file:
+    name: /root/.ssh/authorized_keys
+    state: absent
+
 - name: copy pub ssh keys of allowed users
   authorized_key:
     user: root
     state: present
-    key: "{{lookup('pipe', '../ssh_keys/{{item}}/id_rsa.pub')}}"
-    exclusive: true
+    key: "{{lookup('file', '../ssh_keys/{{item}}.pub')}}"
   with_items: "{{ssh_users}}"
 
 - name: restart sshd
