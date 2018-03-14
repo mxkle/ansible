@@ -2,5 +2,9 @@
 # playbook for deploying base
 
 - hosts : all 
+  gather_facts: false
+  pre_tasks:
+    - raw: apt-get -y install python-simplejson
+    - action: setup
   roles:
     - base

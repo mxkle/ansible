@@ -4,27 +4,15 @@
 - name: allow password-less login for root
   lineinfile:
     name: /etc/ssh/sshd_config
-    regexp: '^#PermitRootLogin'
+    regexp: '^#?PermitRootLogin'
     line: 'PermitRootLogin without-password'
 
 - name: disable password-based login for everyone
   lineinfile:
     name: /etc/ssh/sshd_config
-    regexp: '^#PasswordAuthentication'
+    regexp: '^#?PasswordAuthentication'
     line: 'PasswordAuthentication no'
-
-- name: delete authorized_keys file for user root
-  file:
-    name: /root/.ssh/authorized_keys
-    state: absent
-
-- name: copy pub ssh keys of allowed users
-  authorized_key:
-    user: root
-    state: present
-    key: "{{lookup('file', '../ssh_keys/{{item}}.pub')}}"
-  with_items: "{{ssh_users}}"
-
+  
 - name: restart sshd
   service:
     name: sshd

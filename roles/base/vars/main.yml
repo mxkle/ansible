@@ -1,8 +1,4 @@
 ---
-#vars for base
-
-base_dependencies:
-
 base_packages:
   - "apt-transport-https"
   - "vim"
@@ -10,9 +6,3 @@ base_packages:
   - "net-tools"
   - "curl"
   - "wget"
-
-base_repo:
-
-base_key:
-
-base_keyserver:

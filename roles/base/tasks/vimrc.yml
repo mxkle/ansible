@@ -1,0 +1,8 @@
+---
+
+- name: copy vimrc to root user dir
+  copy:
+    src: files/vimrc
+    dest: /root/.vimrc
+    owner: root
+    mode: 0644
